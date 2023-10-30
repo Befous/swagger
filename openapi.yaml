@@ -5,20 +5,20 @@ info:
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/UniStoreProject3/swagger
+  termsOfService: https://github.com/Befous/swagger
   contact:
     email: befousmain@gmail.com
   license:
     name: Peda Package
-    url: https://pkg.go.dev/github.com/UniStoreProject3/Backend
+    url: https://pkg.go.dev/github.com/Befous/BackendGIS
   version: 1.0.3
 externalDocs:
   description: Repo GCF
   url: https://github.com/UniStoreProject3/gcf/
 servers:
-  - url: https://asia-southeast2-unistore-403306.cloudfunctions.net
+  - url: https://asia-southeast2-gis3-401509.cloudfunctions.net
 tags:
-  - name: Registrasi
+  - name: Geojson
     description: Membuat akun user dengan password terenkripsi
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -34,6 +34,27 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
 paths:
+  /AmbilDataGeojson:
+    get:
+      tags:
+        - Geojson
+      summary: Ambil Data Geojson
+      description: Mengambil geojson dari mongodb
+      operationId: AmbilDataGeojson
+      requestBody:
+        content:
+          application/json:
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geojson'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
   /MembuatUser:
     post:
       tags:
@@ -80,31 +101,25 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /HapusUser:
-    delete:
-      tags:
-        - Delete
-      summary: Mendapatkan token untuk login
-      description: Masukkan username dan password yang telah didaftarkan
-      operationId: MembuatTokenUser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UsernameOnly'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UsernameOnly'
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
 components:
   schemas:
+    Geojson:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            type: 
+              type: string
+            coordinates: 
+              type: array
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
     User:
       type: object
       properties:
@@ -124,12 +139,6 @@ components:
           type: string
           example: ibrohim
         password:
-          type: string
-          example: ibrohim
-    UsernameOnly:
-      type: object
-      properties:
-        username:
           type: string
           example: ibrohim
   requestBodies:
