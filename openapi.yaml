@@ -19,7 +19,7 @@ servers:
   - url: https://asia-southeast2-gis3-401509.cloudfunctions.net
 tags:
   - name: Registrasi
-    description: Mengambil Geojson
+    description: Membuat akun user dengan password terenkripsi
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/get/ #yang ini blom diganti ====================================================================
@@ -29,7 +29,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
   - name: Geojson
-    description: Membuat akun user dengan password terenkripsi
+    description: Mengambil Geojson
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
