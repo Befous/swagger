@@ -16,7 +16,7 @@ externalDocs:
   description: Repo GCF
   url: https://github.com/UniStoreProject3/gcf/
 servers:
-  - url: https://asia-southeast2-gis3-401509.cloudfunctions.net
+  - url: https://asia-southeast2-befous.cloudfunctions.net
 tags:
   - name: Geojson
     description: Menambah dan Memanggil Geojson
