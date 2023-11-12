@@ -33,8 +33,13 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
+  - name: DeleteUser
+    description: Mendapatkan token menggunakan akun user yang telah dibuat
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
 paths:
-  /MembuatGeojsonPoint:
+  /Befous-MembuatGeojsonPoint:
     post:
       tags:
         - Geojson
@@ -57,7 +62,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /MembuatGeojsonPolyline:
+  /Befous-MembuatGeojsonPolyline:
     post:
       tags:
         - Geojson
@@ -80,7 +85,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /MembuatGeojsonPolygon:
+  /Befous-MembuatGeojsonPolygon:
     post:
       tags:
         - Geojson
@@ -103,7 +108,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /AmbilDataGeojson:
+  /Befous-AmbilDataGeojson:
     get:
       tags:
         - Geojson
@@ -124,7 +129,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /MembuatUser:
+  /Befous-RegistrasiUser:
     post:
       tags:
         - Registrasi
@@ -135,19 +140,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UsernameNPassword'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UsernameNPassword'
       security:
         - token:
             - write:apiKey
             - read:apiKey
-  /MembuatTokenUser:
+  /Befous-LoginUser:
     post:
       tags:
         - Login
@@ -166,6 +171,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UsernameNPassword'
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /Befous-HapusUser:
+    delete:
+      tags:
+        - DeleteUser
+      summary: Mendapatkan token untuk login
+      description: Masukkan username dan password yang telah didaftarkan
+      operationId: MembuatTokenUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsernameOnly'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsernameOnly'
       security:
         - token:
             - write:apiKey
@@ -252,18 +280,6 @@ components:
             coordinates: 
               type: array
               example: [[[103.62266157176862,-1.6284887975001965],[103.62266157176862,-1.6285986746736683],[103.62284935445302,-1.6285986746736683],[103.62284935445302,-1.6284887975001965],[103.62266157176862,-1.6284887975001965]]]
-    User:
-      type: object
-      properties:
-        username:
-          type: string
-          example: ibrohim
-        password:
-          type: string
-          example: ibrohim
-        role:
-          type: string
-          example: user
     UsernameNPassword:
       type: object
       properties:
@@ -271,6 +287,12 @@ components:
           type: string
           example: ibrohim
         password:
+          type: string
+          example: ibrohim
+    UsernameOnly:
+      type: object
+      properties:
+        username:
           type: string
           example: ibrohim
   requestBodies:
