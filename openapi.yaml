@@ -39,7 +39,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/ #yang ini blom diganti ====================================================================
 paths:
-  /Befous-MembuatGeojsonPoint:
+  /Befous-MembuatGeojsonPointHeader/{token}:
     post:
       tags:
         - Geojson
@@ -62,7 +62,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-MembuatGeojsonPolyline:
+  /Befous-MembuatGeojsonPolylineHeader/{token}:
     post:
       tags:
         - Geojson
@@ -85,7 +85,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-MembuatGeojsonPolygon:
+  /Befous-MembuatGeojsonPolygonHeader/{token}:
     post:
       tags:
         - Geojson
@@ -108,7 +108,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-AmbilDataGeojson:
+  /Befous-AmbilDataGeojsonHeader/{token}:
     get:
       tags:
         - Geojson
@@ -129,7 +129,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-RegistrasiUser:
+  /Befous-RegistrasiUserToken/{token}:
     post:
       tags:
         - Registrasi
@@ -152,7 +152,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-LoginUser:
+  /Befous-LoginUserToken/{token}:
     post:
       tags:
         - Login
@@ -175,7 +175,7 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-  /Befous-HapusUser:
+  /Befous-HapusUserToken/{token}:
     delete:
       tags:
         - DeleteUser
